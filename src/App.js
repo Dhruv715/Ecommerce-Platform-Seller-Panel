@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+// App.js
 import './App.css';
+import Login from './components/Login';
+import { Routes, Route } from "react-router-dom";
+import SellerPanel from './components/SellerPanel';
+import RegisterPage from './components/RegisterPage ';
+import Verification from './components/Verification';
+import LandingPage from './components/LandingPage';
+import AuthWrapper from './components/AuthWrapper';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        {/* Seller Register */}
+        <Route path="/register" element={<RegisterPage />} />
+        {/* Verify-OTP */}
+        <Route path="/verify" element={<Verification />} />
+        {/* Seller Login */}
+        <Route path="/login" element={<Login />} />
+        {/* Admin Panel */}
+        <Route path="/seller/*" element={
+           <AuthWrapper>
+                <SellerPanel />
+          </AuthWrapper>
+          } />
+      </Routes>
     </div>
   );
 }
