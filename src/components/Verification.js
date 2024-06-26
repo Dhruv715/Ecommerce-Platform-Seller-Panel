@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Box, TextField, Button, Typography } from '@mui/material';
+import { Container, Box, TextField, Button, Typography, CircularProgress } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
@@ -30,7 +30,7 @@ const Verification = () => {
         toast.success('OTP verified successfully and confirmation email sent');
         navigate('/login');
       } else {
-        toast.error(response.data.message); // Corrected line: use response.data.message
+        toast.error(response.data.message);
       }
     } catch (error) {
       toast.error('An error occurred while verifying the OTP.');
@@ -67,7 +67,7 @@ const Verification = () => {
           />
           <Box sx={{ mt: 3 }}>
             <Button type="submit" variant="contained" color="primary" fullWidth disabled={loading}>
-              {loading ? 'Verifying...' : 'Verify'}
+              {loading ? <CircularProgress size={24} /> : 'Verify'}
             </Button>
           </Box>
         </form>
