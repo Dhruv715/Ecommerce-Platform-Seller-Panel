@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { Box, CircularProgress } from '@mui/material';
 
 const AuthWrapper = ({ children }) => {
   const navigate = useNavigate();
@@ -35,12 +36,15 @@ const AuthWrapper = ({ children }) => {
         navigate('/login');
       }
     };
-
     checkAuth();
   }, [navigate, location.pathname]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="50vh">
+        <CircularProgress />
+      </Box>
+    );
   }
 
   return <>{children}</>;

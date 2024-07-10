@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Typography, Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, MenuItem, Select, Button } from '@mui/material';
+import { Box, Typography, Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, MenuItem, Select, CircularProgress } from '@mui/material';
 
 function OrderList() {
   const [orders, setOrders] = useState([]);
@@ -70,7 +70,11 @@ function OrderList() {
   };
 
   if (loading) {
-    return <Typography>Loading...</Typography>;
+    return (
+      <Box>
+        <CircularProgress />
+      </Box>
+    );
   }
 
   if (error) {
@@ -94,7 +98,6 @@ function OrderList() {
                 <TableCell>User</TableCell>
                 <TableCell>Address</TableCell>
                 <TableCell>Order Date</TableCell>
-                {/* <TableCell>Action</TableCell> Added column for action */}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -123,7 +126,6 @@ function OrderList() {
                     ))}
                   </TableCell>
                   <TableCell>{new Date(order.orderDate).toLocaleString()}</TableCell>
-                 
                 </TableRow>
               ))}
             </TableBody>

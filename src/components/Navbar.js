@@ -1,4 +1,3 @@
-// Navbar.js
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -21,7 +20,7 @@ import AddIcon from '@mui/icons-material/Add';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Avatar from '@mui/material/Avatar'; // New import for Avatar
+import Avatar from '@mui/material/Avatar';
 import { Link, useNavigate } from 'react-router-dom';
 import { ListItemText } from '@mui/material';
 
@@ -91,6 +90,11 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  const handleLinkClick = (path) => {
+    navigate(path);
+    handleDrawerClose();
+  };
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -148,7 +152,7 @@ const Navbar = () => {
         <Divider />
         <List>
           <ListItem disablePadding>
-            <ListItemButton component={Link} to="/seller">
+            <ListItemButton onClick={() => handleLinkClick('/seller')}>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
@@ -156,7 +160,7 @@ const Navbar = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component={Link} to="/seller/AddProduct">
+            <ListItemButton onClick={() => handleLinkClick('/seller/AddProduct')}>
               <ListItemIcon>
                 <AddIcon />
               </ListItemIcon>
@@ -164,7 +168,7 @@ const Navbar = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component={Link} to="/seller/Product">
+            <ListItemButton onClick={() => handleLinkClick('/seller/Product')}>
               <ListItemIcon>
                 <ShoppingCartIcon />
               </ListItemIcon>
@@ -172,7 +176,7 @@ const Navbar = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component={Link} to="/seller/Order">
+            <ListItemButton onClick={() => handleLinkClick('/seller/Order')}>
               <ListItemIcon>
                 <ReceiptIcon />
               </ListItemIcon>
