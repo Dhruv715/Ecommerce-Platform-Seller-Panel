@@ -41,7 +41,7 @@ const AuthWrapper = ({ children }) => {
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" height="50vh">
+      <Box display="flex" justifyContent="center" alignItems="center" height="40vh">
         <CircularProgress />
       </Box>
     );
